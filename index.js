@@ -1,10 +1,9 @@
-const allDrumsFields = document.getElementsByClassName("drum");
-let counter = 1;
-allDrumsFields.map((drum) =>{
-    drum.style.backgroundImage = url(`./images/tom${counter}.png`)
-    let music = new Audio(`./sounds/tom-${counter}.mp3`)
-    drum.addEventListneres("click",playTheMusic(music));
-})
-const playTheMusic =(soundToPlay) =>{
-    soundToPlay.play()
+let allDrumsFields = document.getElementsByClassName("drum");
+const playTheMusic =(musiclink) =>{
+    let music = new Audio(musiclink);
+    music.play()
+}
+for(let i=1; i<=allDrumsFields.length; ++i){
+    allDrumsFields[i-1].style.backgroundImage = `url("./images/tom${i}.png")`;
+    allDrumsFields[i-1].addEventListener("click",() =>{playTheMusic(`./sounds/tom-${i}.mp3`)});
 }
